@@ -1,7 +1,8 @@
 package hello.service;
 
-import org.springframework.stereotype.Service;
+import hello.model.User;
 
-@Service
-public class UserService {
+public interface UserService {
+    User findUserByEmail(String email);
+    User saveUser(User user);
 }
