@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -72,7 +74,7 @@
 
 <form action="/login" method="post">
     <div class="imgcontainer">
-        <img src="img.png" alt="Avatar" class="avatar">
+        <img th:src="@{/img.png}" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">

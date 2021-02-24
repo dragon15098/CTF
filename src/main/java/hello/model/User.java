@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -22,7 +25,7 @@ public class User {
     private int id;
 
     @Column(name = "username")
-    private String email;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -30,10 +33,11 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "active")
+    private int active;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+
 }
