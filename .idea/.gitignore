@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../:\NMQ\spring-boot-actuator-h2-rce-master\spring-boot-actuator-h2-rce-master\.idea/dataSources/
+/../../../../../:\NMQ\spring-boot-database-security-master\spring-boot-database-security-master\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

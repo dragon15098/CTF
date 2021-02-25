@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gs-spring-boot-docker.iml" filepath="$PROJECT_DIR$/gs-spring-boot-docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-database-security.iml" filepath="$PROJECT_DIR$/spring-boot-database-security.iml" />
     </modules>
   </component>
 </project>
