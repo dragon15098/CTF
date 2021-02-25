@@ -4,5 +4,7 @@ import com.myjavablog.model.Room;
 import com.myjavablog.model.User;
 
 public interface RoomService {
-    User saveRoom(Room room);
+    Room saveRoom(String roomName);
+
+    Room findById(Room room);
 }

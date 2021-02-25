@@ -9,12 +9,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoomServiceImpl implements RoomService {
-    @Repository
     private final RoomRepository roomRepository;
 
+    public RoomServiceImpl(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     @Override
-    public User saveRoom(Room room) {
-        return null;
+    public Room saveRoom(String roomName) {
+        Room room = new Room();
+        room.setRoomName(roomName);
+        return roomRepository.save(room);
     }
+
+    @Override
+    public Room findById(Room room) {
+        return roomRepository.findById(room.getId());
+    }
+
 }
