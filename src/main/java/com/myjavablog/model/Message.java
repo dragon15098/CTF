@@ -1,13 +1,19 @@
 package com.myjavablog.model;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "MESSAGE")
+@Getter
+@Setter
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "MESSAGE_ID")
     private int id;
 
@@ -17,19 +23,32 @@ public class Message {
     @Column(name = "USER_ID")
     private int userId;
 
-    public int getId() {
-        return id;
+    @Column(name = "MESSAGE_OPTION")
+    private String messageOptionStr;
+
+    @Transient
+    private List<Object> messageOption;
+
+    public String getStyle() {
+        if (messageOption != null) {
+            for (Object o : messageOption) {
+                if (o instanceof TextStyle) {
+                    return ((TextStyle) o).getValue();
+                }
+            }
+        }
+        return "";
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getColor() {
+        if (messageOption != null) {
+            for (Object o : messageOption) {
+                if (o instanceof TextColor) {
+                    return ((TextColor) o).getValue();
+                }
+            }
+        }
+        return "#000000";
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

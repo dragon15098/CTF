@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Checker {
+
     @Autowired
     private DataSource dataSource;
     @Autowired
@@ -38,7 +39,7 @@ public class Checker {
     }
 
     public Checker() {
-        this.isOke = checkConnection();
+        isOke = checkConnection();
     }
 
     public boolean checkConnection() {

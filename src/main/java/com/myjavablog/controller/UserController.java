@@ -35,11 +35,12 @@ public class UserController {
     public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
-        Cookie cookie = new Cookie("USER_DETAIL", Base64.getEncoder().encodeToString(JSON.toJSONString(user).getBytes()));
-        response.addCookie(cookie);
-        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("user", user);
+        Object principal = auth.getPrincipal();
+        if (principal instanceof User) {
+            User user = (User) principal;
+            modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+            modelAndView.addObject("user", user);
+        }
         modelAndView.setViewName("admin/adminHome");
         return modelAndView;
     }

@@ -55,16 +55,15 @@
     </style>
 </head>
 <body>
-<form th:action="@{/room/create}" method="get">
-    <button class="btn btn-md btn-danger btn-block" type="Submit">Create room
-    </button>
-</form>
+<h2>Invite</h2>
 
-<h2>Chat Messages</h2>
-
-<div class="container" th:each="room : ${rooms}" th:onclick="'window.location.href = \'/room/' + ${room.getId()} + '\''">
-    <img src="/images/room.jpg" alt="Avatar" style="width:100%;">
-    <p th:text="${room.getRoomName()}"></p>
+<div class="container" th:each="invitation : ${invitations}">
+    <form th:action="${'/invitation/accept/'+ invitation.getId()}" method="post">
+        <img src="/images/invitation.jpg" alt="Avatar" style="width:100%;">
+        <p th:text="${invitation.getRoomId()}"></p>
+        <button class="btn btn-md btn-danger btn-block" type="Submit">Accept invitation
+        </button>
+    </form>
 </div>
 
 </body>

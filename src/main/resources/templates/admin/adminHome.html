@@ -20,17 +20,14 @@
     </form>
     <br>
 
-    <div th:switch="${user.roles[0].getRole()}">
-        <p th:case="'ADMIN'">User is an administrator</p>
-        <p th:case="*">User is some other thing</p>
-    </div>
-
-    <form th:action="@{/actuator/}" method="get">
-        <button class="btn btn-md btn-danger btn-block" type="Submit">Actuator system
+    <form th:action="@{/room/}" method="get">
+        <button class="btn btn-md btn-danger btn-block" type="Submit">Room
         </button>
     </form>
-    <form th:action="@{/room/}" method="get">
-        <button class="btn btn-md btn-danger btn-block" type="Submit">Actuator system
+
+    <br>
+    <form th:action="@{/invitation/}" method="get">
+        <button class="btn btn-md btn-danger btn-block" type="Submit">Invitation
         </button>
     </form>
     <div class="panel-group" style="margin-top:40px">
