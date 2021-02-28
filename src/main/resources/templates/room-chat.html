@@ -239,7 +239,7 @@
         <div class="container">
             <label><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="toUserName" required>
-            <input type="hidden" name="userId" th:value="${userId}">
+            <input type="hidden" name="fromUserId" th:value="${userId}">
             <button type="submit">Invite</button>
         </div>
 
@@ -263,7 +263,7 @@
     }
 </script>
 <div class="container" th:each="message : ${room.getMessages()}">
-    <img src="/images/user.png" alt="Avatar" style="width:100%;">
+    <img th:src="@{/images/user.png}" alt="Avatar" style="width:100%;">
     <th:block th:switch="${message.getStyle()}">
         <div th:case="'line-through'">
             <p th:text="${message.message}"
@@ -277,6 +277,10 @@
             <p th:text="${message.message}"
                th:style=" 'color: ' +${message.getColor()} +'; font-weight:' + ${message.getStyle()}"></p>
         </div>
+        <div th:case="*">
+            <p th:text="${message.message}"
+               th:style=" 'color: ' +${message.getColor()} +';'"></p>
+        </div>
     </th:block>
 
 
@@ -288,10 +292,12 @@
 
 <div class="container">
     <form th:action="${url}" method="post">
+        <div th:if="${!room.getRoomType().equals(1)}">
+            <label>Get more features in VIP ROOM !!!!</label>
+        </div>
         <div th:if="${room.getRoomType().equals(1)}">
             <label>Text color: </label>
             <input type="text" name="com.myjavablog.model.TextColor" value="#000000"><br><br>
-
             <p>Text style:</p>
             <input type="radio" name="com.myjavablog.model.TextStyle" value="line-through">
             <label>Line through</label><br>
@@ -301,7 +307,7 @@
             <label>Bold</label>
         </div>
         <br>
-        <labels>Subject</labels>
+        <labels>Message</labels>
         <br>
         <textarea name="message" placeholder="Write something.." style="height:50px"></textarea>
 

@@ -1,19 +1,13 @@
 package com.myjavablog.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "ROOM")
-@Getter
-@Setter
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ROOM_ID")
     private Integer id;
 
@@ -26,6 +20,46 @@ public class Room {
     // Room Vip = 1, Normal = 0
     @Column(name = "TYPE")
     private Integer roomType;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public Integer getHostUserId() {
+        return hostUserId;
+    }
+
+    public void setHostUserId(Integer hostUserId) {
+        this.hostUserId = hostUserId;
+    }
+
+    public Integer getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(Integer roomType) {
+        this.roomType = roomType;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
 
     @Transient
     private List<Message> messages;

@@ -1,24 +1,15 @@
 package com.myjavablog.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ROOM_MESSAGE")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class RoomMessage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "USER_ROOM_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ROOM_MESSAGE_ID")
     public Integer id;
 
     @Column(name = "ROOM_ID")
@@ -26,6 +17,37 @@ public class RoomMessage {
 
     @Column(name = "MESSAGE_ID")
     private Integer messageId;
+
+    public RoomMessage() {
+    }
+
+    public RoomMessage(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
+    }
 
     public RoomMessage(Integer roomId, Integer messageId) {
         this.roomId = roomId;

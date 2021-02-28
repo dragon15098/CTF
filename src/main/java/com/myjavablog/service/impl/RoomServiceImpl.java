@@ -8,7 +8,6 @@ import com.myjavablog.repository.RoomRepository;
 import com.myjavablog.repository.UserRoomRepository;
 import com.myjavablog.service.RoomService;
 import com.myjavablog.service.UserRoomService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class RoomServiceImpl implements RoomService {
     private final RoomRepository roomRepository;
     private final UserRoomService userRoomService;
     private final UserRoomRepository userRoomRepository;
     private final MessageRepository messageRepository;
+
+    public RoomServiceImpl(RoomRepository roomRepository, UserRoomService userRoomService, UserRoomRepository userRoomRepository, MessageRepository messageRepository) {
+        this.roomRepository = roomRepository;
+        this.userRoomService = userRoomService;
+        this.userRoomRepository = userRoomRepository;
+        this.messageRepository = messageRepository;
+    }
 
     @Override
     public Room saveRoom(String roomName) {
@@ -41,9 +46,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room findById(Integer roomId) {
-        if (checkUserInRoom(roomId)) {
-            Room room = roomRepository.findById(roomId).orElse(null);
-            if (room != null) {
+        Room room = roomRepository.findById(roomId).orElse(null);
+        if (room != null) {
+            if (checkUserInRoom(roomId)) {
                 List<Message> messages = getMessages(roomId);
                 if (room.getRoomType().equals(1)) { // room VIP
                     for (Message message : messages) {
@@ -53,10 +58,11 @@ public class RoomServiceImpl implements RoomService {
                     }
                 }
                 room.setMessages(messages);
+            } else {
+                room.setId(null);
             }
-            return room;
         }
-        return null;
+        return room;
     }
 
     private List<Message> getMessages(Integer roomId) {

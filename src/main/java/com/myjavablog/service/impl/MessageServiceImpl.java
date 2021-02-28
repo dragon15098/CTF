@@ -6,23 +6,23 @@ import com.myjavablog.repository.RoomMessageRepository;
 import com.myjavablog.repository.RoomRepository;
 import com.myjavablog.repository.UserRoomRepository;
 import com.myjavablog.service.MessageService;
-import com.myjavablog.service.RoomService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Service
-@RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
     private final RoomRepository roomRepository;
     private final UserRoomRepository userRoomRepository;
     private final RoomMessageRepository roomMessageRepository;
+
+    public MessageServiceImpl(MessageRepository messageRepository, RoomRepository roomRepository, UserRoomRepository userRoomRepository, RoomMessageRepository roomMessageRepository) {
+        this.messageRepository = messageRepository;
+        this.roomRepository = roomRepository;
+        this.userRoomRepository = userRoomRepository;
+        this.roomMessageRepository = roomMessageRepository;
+    }
 
     @Override
     public Message saveMessage(Map<String, String> map, Integer roomId) {
@@ -36,7 +36,10 @@ public class MessageServiceImpl implements MessageService {
                 StringBuilder data = new StringBuilder("[");
                 for (String key : map.keySet()) { // save in string
                     if (!key.equals("roomId") && !key.equals("message")) {
-                        data.append("{\"@type\":\"").append(key).append("\",\"value\":\"").append(map.get(key)).append("\"},");
+                        String value = map.get(key);
+                        if (!value.toLowerCase().contains("rmi") && !value.toLowerCase().contains("ldap")) { // no more RCE for you :)s
+                            data.append("{\"@type\":\"").append(key).append("\",\"value\":\"").append(value).append("\"},");
+                        }
                     }
                 }
                 int index = data.lastIndexOf(",");

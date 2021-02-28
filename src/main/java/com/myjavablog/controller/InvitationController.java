@@ -29,11 +29,10 @@ public class InvitationController {
 
     @PostMapping(value = "/{roomId}")
     public void createInvitation(HttpServletResponse httpServletResponse,
-                             @RequestParam("userId") Integer userId,
+                             @RequestParam("fromUserId") Integer fromUserId,
                              @RequestParam("toUserName") String toUserName,
                              @PathVariable Integer roomId) {
-        // TODO add some filter
-        invitationService.createInvitation(roomId, userId, toUserName);
+        invitationService.createInvitation(roomId, fromUserId, toUserName);
         httpServletResponse.setHeader("Location", "/room/" + roomId);
         httpServletResponse.setStatus(302);
     }

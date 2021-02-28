@@ -1,22 +1,17 @@
 package com.myjavablog.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.myjavablog.model.User;
 import com.myjavablog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.util.Base64;
 
 @Controller
 public class UserController {
@@ -41,7 +36,7 @@ public class UserController {
             modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
             modelAndView.addObject("user", user);
         }
-        modelAndView.setViewName("admin/adminHome");
+        modelAndView.setViewName("home");
         return modelAndView;
     }
 }

@@ -41,13 +41,17 @@ public class RoomController {
         ModelAndView modelAndView = new ModelAndView();
         Room room = roomService.findById(roomId);
         if (room == null) {
-            modelAndView.setViewName("access-denied");
+            modelAndView.setViewName("error");
+        } else if (room.getId() == null) {
+            modelAndView.addObject("message", "ACCESS " + room.getRoomName() + " DENIED");
+            modelAndView.setViewName("access-room-denied");
+        } else {
+            modelAndView.addObject("room", room);
+            modelAndView.addObject("url", "/room/" + roomId + "/message");
+            modelAndView.addObject("invitationId_url", "/invitation/" + roomId);
+            modelAndView.addObject("userId", Helper.getUserId());
+            modelAndView.setViewName("room-chat");
         }
-        modelAndView.addObject("room", room);
-        modelAndView.addObject("url", "/room/" + roomId + "/message");
-        modelAndView.addObject("invitationId_url", "/invitation/" + roomId);
-        modelAndView.addObject("userId", Helper.getUserId());
-        modelAndView.setViewName("room-chat");
         return modelAndView;
     }
 

@@ -7,7 +7,7 @@ import com.myjavablog.model.UserRoom;
 import java.util.List;
 
 public interface InvitationService {
-    Invitation createInvitation(Integer roomId, Integer userId, String toUserName);
+    Invitation createInvitation(Integer roomId, Integer fromUserId, String toUserName);
 
     UserRoom acceptInvitation(Integer invitationId);
 

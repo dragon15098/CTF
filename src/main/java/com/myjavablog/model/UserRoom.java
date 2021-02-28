@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class UserRoom {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ROOM_ID")
     public Integer id;
 
@@ -50,5 +50,6 @@ public class UserRoom {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
 }
 

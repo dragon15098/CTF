@@ -3,6 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <style>
         body {
             margin: 0 auto;
@@ -16,6 +20,7 @@
             border-radius: 5px;
             padding: 10px;
             margin: 10px 0;
+            width: auto !important;
         }
 
         .darker {
@@ -62,8 +67,9 @@
 
 <h2>Chat Messages</h2>
 
-<div class="container" th:each="room : ${rooms}" th:onclick="'window.location.href = \'/room/' + ${room.getId()} + '\''">
-    <img src="/images/room.jpg" alt="Avatar" style="width:100%;">
+<div class="container" th:each="room : ${rooms}"
+     th:onclick="'window.location.href = \'/room/' + ${room.getId()} + '\''">
+    <img th:src="@{/images/room.jpg}" alt="Avatar" style="width:100%;">
     <p th:text="${room.getRoomName()}"></p>
 </div>
 
