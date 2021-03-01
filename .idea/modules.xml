@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CTF.iml" filepath="$PROJECT_DIR$/.idea/CTF.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-database-security.iml" filepath="$PROJECT_DIR$/spring-boot-database-security.iml" />
     </modules>
   </component>

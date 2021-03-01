@@ -1,6 +1,6 @@
 INSERT INTO ROLE VALUES (1, 'ADMIN'), (2, 'USER'), (3, 'GOD');
-INSERT INTO USER VALUES (1,1, 'god@gmail.com', 'God', 'God', '$2a$10$FPJCQE1u7EvkgKyet5.7n.juIBzPFcGm3pmnE.UiTTnk1E8VHvK6S');
-INSERT INTO USER VALUES (2,1, 'admin@gmail.com', 'Admin', 'Admin', '$2a$10$FPJCQE1u7EvkgKyet5.7n.juIBzPFcGm3pmnE.UiTTnk1E8VHvK6S');
+INSERT INTO USER VALUES (1,1, 'god@gmail.com', 'God', 'God', '$2a$10$fZVnBSe4JRX43VM/I/2BhOMUKXX.WquWRsk.a2oja/pUZd1IS31E2');
+INSERT INTO USER VALUES (2,1, 'admin@gmail.com', 'Admin', 'Admin', '$2a$10$fZVnBSe4JRX43VM/I/2BhOMUKXX.WquWRsk.a2oja/pUZd1IS31E2');
 INSERT INTO USER_ROLE VALUES (1,3);
 INSERT INTO USER_ROLE VALUES (2,1);
 INSERT INTO ROOM VALUES (1, 1, 'SUPER-VIP-ROOM', 1);
