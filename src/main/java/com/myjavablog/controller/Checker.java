@@ -48,6 +48,7 @@ public class Checker {
                     statement.execute(testQuery);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 this.message = Collections.singletonMap("message", e.getMessage());
                 return false;
             } finally {
@@ -55,6 +56,7 @@ public class Checker {
                     try {
                         connection.close();
                     } catch (Exception ignored) {
+                        ignored.printStackTrace();
                     }
                 }
             }

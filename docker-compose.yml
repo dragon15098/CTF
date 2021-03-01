@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  notes1:
+    build: .
+    container_name: spring
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - H2_DATASOURCE=jdbc:h2:mem:testdb
+      - MYSQL_USER=/h2-console
+      - H2_USERNAME=spring
+      - H2_PASSWORD=123qweasdA@
