@@ -31,9 +31,9 @@ public class InvitationServiceImpl implements InvitationService {
     }
 
     @Override
-    public Invitation createInvitation(Integer roomId, Integer fromUserId, String toUserName) {
+    public Invitation createInvitation(Integer roomId, Integer fromUserId, String toEmail) {
         // TODO add some filter
-        User user = userService.findUserByEmail(toUserName);
+        User user = userService.findUserByEmail(toEmail);
         if (user != null) {
             Invitation invitation = new Invitation();
             invitation.setRoomId(roomId);

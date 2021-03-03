@@ -237,8 +237,8 @@
 
     <form class="modal-content animate" th:action="${invitationId_url}" method="post">
         <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="toUserName" required>
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter email" name="toEmail" required>
             <input type="hidden" name="fromUserId" th:value="${userId}">
             <button type="submit">Invite</button>
         </div>
